@@ -8,9 +8,12 @@ pipeline {
         }
         stage('Check Tools') {
             steps {
-                sh 'python3 --version'
-                sh 'node --version'
-                sh 'terraform version'
+                sh '''
+                    source ~/.nvm/nvm.sh
+                    nvm use --lts
+                    node --version
+                    npm --version
+                '''
             }
         }
     }
