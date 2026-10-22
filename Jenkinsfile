@@ -1,19 +1,13 @@
 pipeline {
     agent any
+    tools {
+        nodejs 'node24'
+    }
     stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello from Jenkinsfile'
-            }
-        }
         stage('Check Tools') {
             steps {
-                sh '''
-                    source ~/.nvm/nvm.sh
-                    nvm use --lts
-                    node --version
-                    npm --version
-                '''
+                sh 'node --version'
+                sh 'npm --version'
             }
         }
     }
